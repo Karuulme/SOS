@@ -16,42 +16,57 @@ namespace SOS
         {
             InitializeComponent();
         }
-        Button[,] Butonlar = new Button[14,14];
+        Button[,] Butonlar = new Button[14, 14];
         Panel[,] paneller = new Panel[14, 14];
         int[,] Konumlar = new int[14, 14];
         int[,] User1 = new int[14, 14];
-        int[,] User2 = new int[14, 14];
+        //int[,] User2 = new int[14, 14];
+
         bool userControl1 = true;
         bool userControl2 = false;
+        public void diziDuzeni(int[,] dizi)
+        {
 
+            for (int i = 0; i < 14; i++)
+            {
+                for (int j = 0; j < 14; j++)
+                {
+                    dizi[i, j] = 3;
+
+                }
+            }
+
+        }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            for (int i=0;i<14;i++)
+            diziDuzeni(User1);
+           
+            for (int i = 0; i < 14; i++)
             {
-                for( int j = 0; j < 14; j++)
+                for (int j = 0; j < 14; j++)
                 {
-                Button btnS = new Button();
-                btnS.Width = 25;
-                btnS.Height = 50;
-                btnS.Text = "S";
-                btnS.Name = i.ToString() + "-" + j.ToString();
-                Button btnO = new Button();
-                btnO.Left = 25;
-                btnO.Width = 25;
-                btnO.Height = 50;
-                btnO.Text = "O";
-                btnO.Name = i.ToString() +"-"+ j.ToString();
-                paneller[i, j] = new Panel();
-                paneller[i, j].Width = 50;
-                paneller[i, j].Height = 50;
-                paneller[i, j].Controls.Add(btnS);
-                paneller[i, j].Controls.Add(btnO);
-                paneller[i, j].Name = i.ToString() +"-"+ j.ToString();
-                SiraliPanel.Controls.Add(paneller[i, j]);
-                btnS.Click += new EventHandler(KClick);
-                btnO.Click += new EventHandler(KClick);
-            }
+                    Button btnS = new Button();
+                    btnS.Width = 25;
+                    btnS.Height = 50;
+                    btnS.Text = "S";
+                    btnS.Name = i.ToString() + "-" + j.ToString();
+                    Button btnO = new Button();
+                    btnO.Left = 25;
+                    btnO.Width = 25;
+                    btnO.Height = 50;
+                    btnO.Text = "O";
+                    btnO.Name = i.ToString() + "-" + j.ToString();
+                    paneller[i, j] = new Panel();
+                    paneller[i, j].Width = 50;
+                    paneller[i, j].Height = 50;
+                    paneller[i, j].Controls.Add(btnS);
+                    paneller[i, j].Controls.Add(btnO);
+                    paneller[i, j].Name = i.ToString() + "-" + j.ToString();
+                    SiraliPanel.Controls.Add(paneller[i, j]);
+                    btnS.Click += new EventHandler(KClick);
+                    btnO.Click += new EventHandler(KClick);
+                }
             }
 
         }
@@ -59,66 +74,61 @@ namespace SOS
         {
             Button buton = (Button)sender;
             string numara = buton.Name.ToString();
-           
-           // string[] parcalar=numara.Split('-');
-           // MessageBox.Show(parcalar[0]);
+
+            // string[] parcalar=numara.Split('-');
+            // MessageBox.Show(parcalar[0]);
             for (int i = 0; i < 14; i++)
             {
                 for (int j = 0; j < 14; j++)
                 {
-                    if (paneller[i, j].Name.ToString()==numara)
+                    if (paneller[i, j].Name.ToString() == numara)
                     {
                         paneller[i, j].Controls.Clear();
-                        if (userControl1==true)
-                        {
-                            userControl1 = false;
-                            userControl2 = true;
-                            Butonlar[i,j] = new Button();
+                       
+                          
+                       
+                            Butonlar[i, j] = new Button();
                             Butonlar[i, j].Width = 50;
                             Butonlar[i, j].Font = new Font(Butonlar[i, j].Font.FontFamily, 30);
                             Butonlar[i, j].Height = 50;
                             Butonlar[i, j].BackColor = Color.Green;
                             Butonlar[i, j].Text = buton.Text;
                             paneller[i, j].Controls.Add(Butonlar[i, j]);
-                            if (Butonlar[i, j].Text == "S")
-                            {
+                        if (userControl1==true)
+                        {
 
-                                User1[i, j] = 1;
-                                DiziKontrol(User1, 1,1);
-                            }
-                            else
-                            {
-                                User1[i, j] = 2;
-                                DiziKontrol(User1, 2,1);
-                            }
-                            
-                           
+                            userControl1 = false;
+                            userControl2 = true;
+                            label1.BackColor = Color.Red;
+                            label2.BackColor = Color.Green;
                         }
                         else
                         {
                             userControl1 = true;
                             userControl2 = false;
-                            Button butonn = new Button();
-                            butonn.Width = 50;
-                            butonn.Font = new Font(butonn.Font.FontFamily, 30);
-                            butonn.Height = 50;
-                            butonn.BackColor = Color.Red;
-                            butonn.Text = buton.Text;
-                            paneller[i, j].Controls.Add(butonn);
-                            if (butonn.Text == "S")
+                            label1.BackColor = Color.Green;
+                            label2.BackColor = Color.Red;
+                            
+
+
+                        }
+                       
+                            if (Butonlar[i, j].Text == "S")
                             {
 
-                                User2[i, j] = 1;
-                                DiziKontrol(User2,1,2);
+                                User1[i, j] = 1;
+                                DiziKontrol(User1, i, j, 1);
+
                             }
                             else
                             {
-                                User2[i, j] = 2;
-                                DiziKontrol(User2, 2, 2);
-
+                                User1[i, j] = 2;
+                                DiziKontrol(User1, i, j, 2);
                             }
-                           
-                        }
+
+
+                        
+                       
                     }
 
 
@@ -131,51 +141,87 @@ namespace SOS
         }
 
 
-        public void DiziKontrol(int[,] Dizi,int T,int User)
+        public void DiziKontrol(int[,] Dizi, int Y, int X, int T)
         {
+            bool KazananControl = false;
+            for (int i=0;i<14; i++)  // Yatayda kontrol ediyor
+            {
+                for (int j = 0; j < 12; j++)
+                {
 
-            for (int i=0;i<14;i++)
+                    if (Dizi[i, j]==1 && Dizi[i, j+1] == 2 && Dizi[i, j+2] == 1)
+                    {
+                        KazananControl = true;
+
+                    }
+
+                }
+
+
+            }
+            for (int i = 0; i < 12; i++)// Dikeyde kontrol ediyor
             {
                 for (int j = 0; j < 14; j++)
                 {
 
-                  
-                    if (Dizi[i, j]==1 || Dizi[i, j]==2) {
-
-                       
-
-                        for (int h = i-1; h <i+2; h++)
-                            {
-                                for (int r = j-1; r < j+2; r++)
-                                {
-                                if (Dizi[i, j]==1)
-                                {
-                                    if(Butonlar[h, r]==2)
-                                    
-
-
-                                }
-                                paneller[h, r].BackColor=Color.Black;
-
-
-                                 }
-
-                        }
-
-
-
-
-
-
-
-
+                    if (Dizi[i, j] == 1 && Dizi[i+1, j ] == 2 && Dizi[i+2, j] == 1)
+                    {
+                        KazananControl = true;
                      
-
 
                     }
 
+                }
+
+
+            }
+
+            for (int i = 0; i <12; i++)// sağ alt çaprazı kontrol eidyor
+            {
+                for (int j=0;j<12;j++)
+                {
+
+
+                    if (Dizi[i, j] == 1 && Dizi[i + 1, j +1] == 2 && Dizi[i + 2, j + 2] == 1)
+                    {
+                        KazananControl = true;
+
+                    }
+                }
+             
+
+            }
+         
+            for (int i = 13; i > 1; i--)// sağ üst çaprazı kontrol eidyor
+            {
+                for (int j = 0; j < 12; j++)
+                {
+
+                    Console.Write(Dizi[i, j]);
+                    if (Dizi[i, j] == 1 && Dizi[i - 1, j + 1] == 2 && Dizi[i - 2, j + 2] == 1)
+                    {
+                        KazananControl = true;
+
+                    }
+                }
+                
+
+
+            }
+            if (KazananControl == true)
+            {
+                if (userControl1==true)
+                
+                {
+                    MessageBox.Show("2. oyuncu");
+                }
+                else
+                {
+                    MessageBox.Show("1. oyuncu");
+                    
 
                 }
+                KazananControl = false;
 
 
             }
@@ -183,6 +229,13 @@ namespace SOS
 
 
 
+          
+
         }
+            
+
+
+
     }
 }
+
