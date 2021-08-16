@@ -8,3 +8,13 @@ C:\Users\karuu\Desktop\SOS\SOS\SOS\obj\Debug\SOS.csproj.GenerateResource.cache
 C:\Users\karuu\Desktop\SOS\SOS\SOS\obj\Debug\SOS.csproj.CoreCompileInputs.cache
 C:\Users\karuu\Desktop\SOS\SOS\SOS\obj\Debug\SOS.exe
 C:\Users\karuu\Desktop\SOS\SOS\SOS\obj\Debug\SOS.pdb
+C:\Users\karuu\Desktop\c# örnekleri\SOS\SOS\SOS\bin\Debug\SOS.exe.config
+C:\Users\karuu\Desktop\c# örnekleri\SOS\SOS\SOS\bin\Debug\SOS.exe
+C:\Users\karuu\Desktop\c# örnekleri\SOS\SOS\SOS\bin\Debug\SOS.pdb
+C:\Users\karuu\Desktop\c# örnekleri\SOS\SOS\SOS\obj\Debug\SOS.csproj.AssemblyReference.cache
+C:\Users\karuu\Desktop\c# örnekleri\SOS\SOS\SOS\obj\Debug\SOS.Form1.resources
+C:\Users\karuu\Desktop\c# örnekleri\SOS\SOS\SOS\obj\Debug\SOS.Properties.Resources.resources
+C:\Users\karuu\Desktop\c# örnekleri\SOS\SOS\SOS\obj\Debug\SOS.csproj.GenerateResource.cache
+C:\Users\karuu\Desktop\c# örnekleri\SOS\SOS\SOS\obj\Debug\SOS.csproj.CoreCompileInputs.cache
+C:\Users\karuu\Desktop\c# örnekleri\SOS\SOS\SOS\obj\Debug\SOS.exe
+C:\Users\karuu\Desktop\c# örnekleri\SOS\SOS\SOS\obj\Debug\SOS.pdb

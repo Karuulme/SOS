@@ -16,10 +16,18 @@ namespace SOS
         {
             InitializeComponent();
         }
+        public bool KazananControl = false;
+        public int userpuan1 = 0;
+        public int userpuan2 = 0;
         Button[,] Butonlar = new Button[14, 14];
         Panel[,] paneller = new Panel[14, 14];
         int[,] Konumlar = new int[14, 14];
         int[,] User1 = new int[14, 14];
+
+        int[,] satir = new int[14, 14];
+        int[,] stun = new int[14, 14];
+        int[,] sagcapraz = new int[14, 14];
+        int[,] solcapraz = new int[14, 14];
         //int[,] User2 = new int[14, 14];
 
         bool userControl1 = true;
@@ -143,7 +151,8 @@ namespace SOS
 
         public void DiziKontrol(int[,] Dizi, int Y, int X, int T)
         {
-            bool KazananControl = false;
+            KazananControl = false;
+        
             for (int i=0;i<14; i++)  // Yatayda kontrol ediyor
             {
                 for (int j = 0; j < 12; j++)
@@ -151,7 +160,16 @@ namespace SOS
 
                     if (Dizi[i, j]==1 && Dizi[i, j+1] == 2 && Dizi[i, j+2] == 1)
                     {
-                        KazananControl = true;
+                      
+                        if (satir[i, j] == 0 && satir[i, j + 1] == 0 && satir[i, j + 2] == 0)
+                        {
+
+                            KazananControl = true;
+                            satir[i, j] = 1;
+                        satir[i, j+1] = 1;
+                        satir[i, j+2] = 1;
+                        }
+
 
                     }
 
@@ -166,9 +184,14 @@ namespace SOS
 
                     if (Dizi[i, j] == 1 && Dizi[i+1, j ] == 2 && Dizi[i+2, j] == 1)
                     {
-                        KazananControl = true;
-                     
+                        if (satir[i, j] == 0 && satir[i+1, j] == 0 && satir[i+2, j] == 0)
+                        {
+                            KazananControl = true;
+                            stun[i, j] = 1;
+                            stun[i + 1, j] = 1;
+                            stun[i + 2, j] = 1;
 
+                        }
                     }
 
                 }
@@ -184,8 +207,13 @@ namespace SOS
 
                     if (Dizi[i, j] == 1 && Dizi[i + 1, j +1] == 2 && Dizi[i + 2, j + 2] == 1)
                     {
-                        KazananControl = true;
-
+                        if (satir[i, j] == 0 && satir[i + 1, j+1] == 0 && satir[i + 2, j+2] == 0)
+                        {
+                            KazananControl = true;
+                            sagcapraz[i, j] = 1;
+                            sagcapraz[i + 1, j + 1] = 1;
+                            sagcapraz[i + 2, j + 2] = 1;
+                        }
                     }
                 }
              
@@ -200,36 +228,45 @@ namespace SOS
                     Console.Write(Dizi[i, j]);
                     if (Dizi[i, j] == 1 && Dizi[i - 1, j + 1] == 2 && Dizi[i - 2, j + 2] == 1)
                     {
-                        KazananControl = true;
+                        if (satir[i, j] == 0 && satir[i - 1, j - 1] == 0 && satir[i -2, j - 2] == 0)
+                        {
+                            KazananControl = true;
+                            solcapraz[i, j] = 1;
+                            solcapraz[i - 1, j - 1] = 1;
+                            solcapraz[i - 2, j - 2] = 1;
 
+                        }
                     }
                 }
                 
 
 
             }
+
+
             if (KazananControl == true)
             {
                 if (userControl1==true)
                 
                 {
-                    MessageBox.Show("2. oyuncu");
+                 
+                    userpuan2++;
+                    label4.Text = userpuan2.ToString();
+                   
                 }
                 else
                 {
-                    MessageBox.Show("1. oyuncu");
-                    
+                    userpuan1++;
+                    label3.Text = userpuan1.ToString();
 
+                   
                 }
-                KazananControl = false;
-
-
             }
-
-
-
-
           
+
+
+
+
 
         }
             
